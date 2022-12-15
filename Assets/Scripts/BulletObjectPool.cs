@@ -74,6 +74,7 @@ public class BulletObjectPool
     /// <param name="bulletType">BulletType type of bullet to be released back into its pool</param>
     public void ReleaseBullet(Bullet releasedBullet, BulletType bulletType)
     {
-        // do stuff
+        _pools[bulletType].Add(releasedBullet);
+        releasedBullet.gameObject.SetActive(false);
     }
 }

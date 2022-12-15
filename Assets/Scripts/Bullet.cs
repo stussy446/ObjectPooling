@@ -6,9 +6,12 @@ public class Bullet : MonoBehaviour
 {
     public virtual BulletType BulletType => BulletType.Normal;
 
-    public void ReturnToPool()
+    /// <summary>
+    /// Returns the bullet to its appropriate pool
+    /// </summary>
+    /// <param name="pool"></param>
+    public void ReturnToPool(BulletObjectPool pool)
     {
-        // do stuff
+        pool.ReleaseBullet(this, this.BulletType);
     }
-  
 }

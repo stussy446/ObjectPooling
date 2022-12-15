@@ -11,11 +11,13 @@ public class Gun : MonoBehaviour
     [Header("Gun Settings")]
     [SerializeField] private int _clipSize = 10;
     [SerializeField] private float _fireSpeed = 10f;
+    [SerializeField] private float _bulletLifeSpan = 3f;
 
     private void Awake()
     {
         _bulletPool.Setup(_clipSize);
     }
+
     private void Update()
     {
         Fire();
@@ -30,7 +32,16 @@ public class Gun : MonoBehaviour
 
             Rigidbody bulletrb = bullet.GetComponent<Rigidbody>();
             bulletrb.AddForce(Vector3.forward * _fireSpeed * Time.deltaTime, ForceMode.Impulse);
+
+            StartCoroutine(ReturnBullet(bullet));
         }
+    }
+
+    private IEnumerator ReturnBullet(Bullet bullet)
+    {
+        yield return new WaitForSeconds(_bulletLifeSpan);
+        bullet.ReturnToPool(_bulletPool);
+        Debug.Log("Bullet returned to pool");
     }
 
 }
