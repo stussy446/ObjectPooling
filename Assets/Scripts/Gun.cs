@@ -14,10 +14,12 @@ public class Gun : MonoBehaviour
     [SerializeField] private float _bulletLifeSpan = 3f;
 
     private int _activeBullets = 0;
+    private Animator _animator;
 
     private void Awake()
     {
         _bulletPool.Setup(_clipSize);
+        _animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -39,6 +41,7 @@ public class Gun : MonoBehaviour
 
             Rigidbody bulletrb = bullet.GetComponent<Rigidbody>();
             bulletrb.AddForce(Vector3.forward * _fireSpeed * Time.deltaTime, ForceMode.Impulse);
+            _animator.SetTrigger("KickBack");
 
             StartCoroutine(ReturnBullet(bullet));
         }
