@@ -6,5 +6,9 @@ public class Bullet : MonoBehaviour
 {
     public virtual BulletType BulletType => BulletType.Normal;
 
+    public void ReturnToPool()
+    {
+        // do stuff
+    }
   
 }

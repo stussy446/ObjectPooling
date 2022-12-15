@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8496643006562088579}
   m_Layer: 0
-  m_Name: BulletSpawner
+  m_Name: BulletSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145,4 +145,7 @@ MonoBehaviour:
   _bulletPool:
     _bulletPrefabs:
     - {fileID: 962024556220822524, guid: 72629ed56853b734d8c3aa4ce67ca312, type: 3}
+  _bulletSpawnPoint: {fileID: 8496643006562088579}
+  _bulletType: 0
   _clipSize: 10
+  _fireSpeed: 18.29
