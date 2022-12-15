@@ -12,6 +12,7 @@ public class Bullet : MonoBehaviour
     /// <param name="pool"></param>
     public void ReturnToPool(BulletObjectPool pool)
     {
+        this.GetComponent<Rigidbody>().velocity = Vector3.zero;
         pool.ReleaseBullet(this, this.BulletType);
     }
 }
